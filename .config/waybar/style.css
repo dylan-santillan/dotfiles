@@ -1,0 +1,49 @@
+@import "./themes/gruvbox.css";
+
+* {
+    background-color: @bg;
+    font-family: Ubuntu Nerd Font;
+    font-size: 18px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    color: @fg;
+}
+
+/* LEFT */
+
+#workspaces button {
+    margin: -5px;
+    padding: 0;
+    color: @green;
+}
+
+#workspaces button:hover {
+    background-color: transparent;
+}
+
+#workspaces button.persistent {
+    color: @fg;
+}
+
+#workspaces button.focused {
+    color: @blue;
+}
+
+#workspaces button.urgent {
+    color: @purple;
+}
+
+/* RIGHT */
+
+#network {
+    margin: 0 15px;
+}
+
+#pulseaudio {
+    margin-right: 15px;
+}

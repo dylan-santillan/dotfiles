@@ -1,0 +1,103 @@
+// -*- mode: jsonc -*-
+{
+    "position": "top",
+    "height": 35,
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/pacman",
+        "network",
+        "pulseaudio#input",
+        "pulseaudio#output"
+    ],
+    // LEFT
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "focused": ""
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    // CENTER
+    "clock": {
+        "timezone": "America/Argentina/Buenos_Aires",
+        "format": "󰃭 {0:%F}    {0:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ebdbb2'><b>{}</b></span>",
+                "days": "<span color='#ebdbb2'><b>{}</b></span>",
+                "weeks": "<span color='#689d6a'><b>W{}</b></span>",
+                "weekdays": "<span color='#d79921'><b>{}</b></span>",
+                "today": "<span color='#b16286'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "tz_up",
+            "on-scroll-down": "tz_down"
+        }
+    },
+    // RIGHT
+    "custom/pacman": {
+        "format": "{icon}{0}",
+        "return-type": "json",
+        "format-icons": {
+            "pending-updates": "󰮯 ",
+            "updated": "󰊠 "
+        },
+        "exec-if": "which waybar-updates",
+        "exec": "waybar-updates"
+    },
+    "network": {
+        "tooltip": true,
+        "format-ethernet": "󰈀 ",
+        "tooltip-format": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+        "format-disconnected": "󰖪 ",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval": 5
+    },
+    "pulseaudio#input": {
+        "format-source": " {volume}%",
+        "format-source-muted": "  Off",
+        "format": "{format_source}",
+        "scroll-step": 10,
+        "max-volume": 100,
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
+    },
+    "pulseaudio#output": {
+        "format": "{icon} {volume}%",
+        "format-muted": " off",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "max-volume": 100,
+        "scroll-step": 5,
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "pavucontrol"
+    }
+}
