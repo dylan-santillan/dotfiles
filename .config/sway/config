@@ -1,7 +1,8 @@
 exec_always gammastep -O 3200
+exec_always launcher_waybar
 
 # OUTPUT
-output * bg $HOME/Pictures/wallpapers/sunset.jpg fill
+output * bg $HOME/Pictures/wallpapers/abstract.png fill
 
 # INPUT
 input "type:keyboard" {
@@ -10,7 +11,7 @@ input "type:keyboard" {
 
 # VISUAL
 gaps inner 10
-default_border pixel 2
+default_border pixel 3 
 
 set $cl_high #458588
 set $cl_indi #458588
@@ -31,10 +32,10 @@ bindsym $mod+Shift+r reload
 
 # Apps and tools
 bindsym $mod+t exec foot
-bindsym $mod+b exec firefox 
+bindsym $mod+b exec zen-browser 
 bindsym $mod+Space exec rofi -show drun
 bindsym $mod+s exec grim $(xdg-user-dir PICTURES)/screenshoots/$(date +'%sscreenshoot.png')
-bindsym $mod+Shift+s exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/screenshoots/$(date +'%sscreenshoot.png')
+bindsym $mod+Shift+s exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/screenshoots/$(date +'%sscreenshoot.png') 
 bindsym $mod+Shift+c exec wl-color-picker clipboard
 
 # Move your focus around
@@ -88,18 +89,5 @@ bindsym $mod+Alt+Right resize grow width 20px
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-
-
-# Status Bar
-bar {
-    position top
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /etc/sway/config.d/*
